@@ -23,18 +23,22 @@ public class UserService {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
     }
+    //Get All Users | Admin
     public List<UserDto> getAllUsers(){
         List<User> allUsers = userRepository.findAll();
-        List<UserDto> allNotesDto = allUsers.stream()
+        List<UserDto> allUsersDto = allUsers.stream()
                 .map(user -> modelMapper.map(user,UserDto.class))
                 .collect(Collectors.toList());
-        return  allNotesDto;
+        return  allUsersDto;
     }
+    //Create User | Unknown
     public UserDto postUser(UserDto userDto){
         User user = modelMapper.map(userDto, User.class);
         User savedUser = userRepository.save(user);
         return modelMapper.map(savedUser, UserDto.class);
     }
+    //Delete User By Id | Admin
+    //Bir ara degistir optional yap yok ise
     public Boolean delUser(Long id){
         try {
             userRepository.deleteById(id);
@@ -43,7 +47,7 @@ public class UserService {
         }
         return true;
     }
-
+    // Update User Information | User
     public UserDto updateUser(Long id, UserDto updatedUserDto){
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()){
@@ -53,7 +57,7 @@ public class UserService {
             User updatedUser = userRepository.save(existingUser);
             return modelMapper.map(updatedUser, UserDto.class);
         }else {
-            throw new UsernameNotFoundException("User Not Found!!!");
+            throw new ObjectNotFoundException(optionalUser,"User not found!!!");
         }
     }
 
