@@ -24,18 +24,20 @@ public class UserController {
     public ResponseEntity<List<UserDto>> getAllUsers(){
         return ResponseEntity.ok(userService.getAllUsers());
     }
+
     //Get user by id
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable Long id){
         return ResponseEntity.ok(userService.getUserById(id));
     }
+
     //Create a user
     @PostMapping
     public  ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
         return ResponseEntity.ok(userService.postUser(userDto));
     }
-    //Delete user by id
 
+    //Delete user by id
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteUser(@RequestBody UserDto userDto){
         return ResponseEntity.ok(userService.delUser(userDto.getId()));
