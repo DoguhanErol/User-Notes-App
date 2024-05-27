@@ -31,6 +31,7 @@ public class UserService {
                 .collect(Collectors.toList());
         return  allUsersDto;
     }
+    
     //Create User | Unknown
     public UserDto postUser(UserDto userDto){
         User user = modelMapper.map(userDto, User.class);

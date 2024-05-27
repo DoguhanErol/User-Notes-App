@@ -1,9 +1,7 @@
 package com.example.UserNotesApp.service;
 
 import com.example.UserNotesApp.dto.NoteDto;
-import com.example.UserNotesApp.dto.UserDto;
 import com.example.UserNotesApp.model.Note;
-import com.example.UserNotesApp.model.User;
 import com.example.UserNotesApp.repository.NoteRepository;
 import jakarta.transaction.Transactional;
 import org.hibernate.ObjectNotFoundException;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
