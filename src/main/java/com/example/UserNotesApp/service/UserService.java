@@ -31,7 +31,17 @@ public class UserService {
                 .collect(Collectors.toList());
         return  allUsersDto;
     }
-    
+    //Get user by id
+    public UserDto getUserById(Long id){
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            User existingUser = optionalUser.get();
+            return modelMapper.map(existingUser, UserDto.class);
+        } else {
+            throw new ObjectNotFoundException(optionalUser,"User not found!!!");
+        }
+
+    }
     //Create User | Unknown
     public UserDto postUser(UserDto userDto){
         User user = modelMapper.map(userDto, User.class);
