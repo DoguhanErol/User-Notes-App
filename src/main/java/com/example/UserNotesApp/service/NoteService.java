@@ -5,17 +5,18 @@ import com.example.UserNotesApp.model.Note;
 import com.example.UserNotesApp.repository.NoteRepository;
 import jakarta.transaction.Transactional;
 import org.hibernate.ObjectNotFoundException;
-import org.hibernate.annotations.NotFound;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class NoteService {
+
     private final NoteRepository noteRepository;
 
     private final ModelMapper modelMapper;
@@ -34,7 +35,7 @@ public class NoteService {
         return allNoteDtos;
     }
     //Get notes by user id | User, Admin
-    public List<NoteDto> getNotesById(Long id){
+    public List<NoteDto> getNotesById(UUID id){
         List<Note> userNotes = noteRepository.findAllByUserId(id);
         List<NoteDto> userNotesDtos = userNotes.stream()
                 .map(note -> modelMapper.map(note, NoteDto.class))

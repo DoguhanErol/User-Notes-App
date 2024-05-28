@@ -6,9 +6,7 @@ import com.example.UserNotesApp.exceptions.SystemException;
 import com.example.UserNotesApp.model.User;
 import com.example.UserNotesApp.repository.UserRepository;
 import jakarta.transaction.Transactional;
-import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
