@@ -3,17 +3,18 @@ package com.example.UserNotesApp.dto;
 import java.util.Date;
 
 public class NoteDto {
-
     private Long id;
     private String title;
     private String content;
-    private UserDto user;
-    private Date createdAt;
+    private Long userId; // UserDto yerine sadece userId olacak
 
     // Getters and Setters
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -32,15 +33,12 @@ public class NoteDto {
         this.content = content;
     }
 
-    public UserDto getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(UserDto user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
 }

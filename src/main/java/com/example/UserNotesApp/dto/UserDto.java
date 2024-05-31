@@ -3,7 +3,6 @@ package com.example.UserNotesApp.dto;
 import java.util.Date;
 import java.util.List;
 
-
 public class UserDto {
 
     private Long id;
@@ -12,11 +11,20 @@ public class UserDto {
     private List<NoteDto> notes;
     private Date createdAt;
 
+
+
+
+
     // Getters and Setters
 
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id){
+        this.id = id;
+    }
+
 
     public String getUserName() {
         return userName;
@@ -40,10 +48,6 @@ public class UserDto {
 
     public void setNotes(List<NoteDto> notes) {
         this.notes = notes;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
     }
 
 }
