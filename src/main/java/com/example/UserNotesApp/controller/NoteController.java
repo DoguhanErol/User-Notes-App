@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @RestController
 @RequestMapping("api/v1/notes")
@@ -25,7 +25,7 @@ public class NoteController {
     }
     @GetMapping("/{id}")
     //Get notes by user id
-    public ResponseEntity<List<NoteDto>> getNotesByUserId(@PathVariable UUID id){
+    public ResponseEntity<List<NoteDto>> getNotesByUserId(@PathVariable Long id){
         return ResponseEntity.ok(noteService.getNotesById(id));
     }
 
@@ -36,7 +36,8 @@ public class NoteController {
     }
     //Update the note
     @PutMapping("/{id}")
-    public ResponseEntity<NoteDto> updateNote(@PathVariable Long id,@RequestBody NoteDto noteDto){
+    public ResponseEntity<NoteDto> updateNote(@PathVariable Long
+ id,@RequestBody NoteDto noteDto){
         NoteDto updatedNoteDto = noteService.updateNote(id,noteDto);
         if (updatedNoteDto != null){
             return ResponseEntity.ok(updatedNoteDto);
@@ -47,7 +48,8 @@ public class NoteController {
 
     //Delete the note
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> deleteNote(@PathVariable Long id){
+    public ResponseEntity<Boolean> deleteNote(@PathVariable Long
+ id){
         return ResponseEntity.ok(noteService.deleteNote(id));
     }
 
