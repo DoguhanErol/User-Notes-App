@@ -30,7 +30,7 @@ public class NoteController {
     }
 
     //Create a note
-    @PutMapping
+    @PostMapping
     public ResponseEntity<NoteDto> createNote(@RequestBody NoteDto noteDto){
         return ResponseEntity.ok(noteService.postNote(noteDto));
     }
@@ -48,8 +48,7 @@ public class NoteController {
 
     //Delete the note
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> deleteNote(@PathVariable Long
- id){
+    public ResponseEntity<Boolean> deleteNote(@PathVariable Long id){
         return ResponseEntity.ok(noteService.deleteNote(id));
     }
 

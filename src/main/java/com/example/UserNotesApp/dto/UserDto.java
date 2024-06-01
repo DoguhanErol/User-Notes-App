@@ -9,7 +9,6 @@ public class UserDto {
     private String userName;
     private String password;
     private List<NoteDto> notes;
-    private Date createdAt;
 
 
 

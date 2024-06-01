@@ -52,6 +52,16 @@ public class UserService {
             throw new SystemException("An unexpected error occurred while retrieving the user");
         }
     }
+    //Check user is exist by its id
+    public boolean isUserExist(Long id){
+
+        if (userRepository.existsById(id)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     //Create User | Unknown
     public UserDto postUser(UserDto userDto){
         try{
